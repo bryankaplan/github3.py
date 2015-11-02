@@ -118,10 +118,9 @@ class GitHubCore(GitHubObject):
             if status_code == true_code:
                 return True
             if status_code != false_code and status_code >= 400:
-                __logs__.info('#'*80) #XXX
-                __logs__.info(response.content) #XXX
-                #raise GitHubError(response)
-                raise GitHubError(response.content) #XXX
+                __logs__.error('#'*80) #XXX
+                __logs__.error(response.content) #XXX
+                raise GitHubError(response)
         return False
 
     def _delete(self, url, **kwargs):
